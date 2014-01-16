@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = StringMetric::VERSION
   spec.authors       = ["Giorgos Tsiftsis"]
   spec.email         = ["giorgos.tsiftsis@skroutz.gr"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{A simple library with String Metric algorithms}
+  spec.description   = %q{A simple library with String Metric algorithms}
+  spec.homepage      = "https://github.com/chief/string_metric"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
