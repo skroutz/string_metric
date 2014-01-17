@@ -2,12 +2,15 @@
 
 module StringMetric
   module Levenshtein
-    def distance(a, b)
+    def distance(a, b, options = {})
       return 0 if a == b
       return b.size if a.nil? || a.empty?
       return a.size if b.nil? || b.empty?
 
-      recursive(a, b)
+      case options[:strategy]
+      when :recursive
+        recursive(a, b)
+      end
     end
     module_function :distance
 

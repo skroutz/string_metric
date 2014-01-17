@@ -34,7 +34,14 @@ describe StringMetric::Levenshtein do
       end
     end
 
-    context "when recursive is used" do
+    context "when :recursive is used" do
+      let(:options) { { strategy: :recursive } }
+
+      it "returns Levenshtein distance" do
+        expect(described_class.distance("kitten", "sitting", options)).to eq 3
+      end
+    end
+
       it "returns Levenshtein distance" do
         expect(described_class.distance("kitten", "sitting")).to eq 3
       end
