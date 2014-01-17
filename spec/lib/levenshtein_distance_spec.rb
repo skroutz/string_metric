@@ -42,8 +42,24 @@ describe StringMetric::Levenshtein do
       end
     end
 
+    context "when :recursive_memoized is used" do
+      let(:options) { { strategy: :recursive_memoized } }
+
+      it "returns Levenshtein distance" do
+        expect(described_class.distance("kitten", "sitting", options)).to eq 3
+      end
+    end
+
     context "when :full_matrix is used" do
       let(:options) { { strategy: :full_matrix } }
+
+      it "returns Levenshtein distance" do
+        expect(described_class.distance("kitten", "sitting", options)).to eq 3
+      end
+    end
+
+    context "when :two_matrix_rows is used" do
+      let(:options) { { strategy: :two_matrix_rows } }
 
       it "returns Levenshtein distance" do
         expect(described_class.distance("kitten", "sitting", options)).to eq 3

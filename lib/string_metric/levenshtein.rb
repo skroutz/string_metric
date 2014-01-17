@@ -12,6 +12,10 @@ module StringMetric
         recursive(a, b)
       when :full_matrix
         iterative_with_full_matrix(a, b)
+      when :two_matrix_rows
+        iterative_with_two_matrix_rows(a, b)
+      when :recursive_memoized
+        recursive_memoized(a, b)
       end
     end
     module_function :distance
@@ -33,6 +37,33 @@ module StringMetric
     end
     module_function :recursive
     private_class_method :recursive
+
+    def recursive_memoized(a, b)
+      return @_memoize[a][b] if !@_memoize.nil? && !@_memoize[a][b].nil?
+      @_memoize ||= []
+
+
+      @_memoize[a][b] =
+        if a.size.zero?
+          b.size
+        elsif b.size.zero?
+          a.size
+        else
+          if a.chars.last == b.chars.last
+            cost = 0
+          else
+            cost = 1
+          end
+
+          [recursive_memoized(a.chop, b) + 1,
+           recursive_memoized(a, b.chop) + 1,
+           recursive_memoized(a.chop, b.chop) + cost].min
+        end
+
+      return @_memoize[a][b]
+    end
+    module_function :recursive_memoized
+    private_class_method :recursive_memoized
 
     def iterative_with_full_matrix(a, b)
       d = (0..b.size).map do |i|
@@ -58,6 +89,31 @@ module StringMetric
     end
     module_function :iterative_with_full_matrix
     private_class_method :iterative_with_full_matrix
+
+    def iterative_with_two_matrix_rows(a, b)
+      v0 = []
+      v1 = []
+
+      v0 = (0..b.size).to_a
+
+      m = a.size
+      n = b.size
+
+      (m + 1).times do |i|
+        v1[0] = i + 1
+
+        n.times do |j|
+          cost = a[i] == b[j] ? 0 : 1
+          v1[j + 1] = [v1[j] + 1, v0[j + 1] + 1, v0[j] + cost].min
+        end
+
+        v0 = v1.dup
+      end
+
+      v1.last
+    end
+    module_function :iterative_with_two_matrix_rows
+    private_class_method :iterative_with_two_matrix_rows
 
   end
 end
