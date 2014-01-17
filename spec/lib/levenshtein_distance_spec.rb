@@ -42,8 +42,11 @@ describe StringMetric::Levenshtein do
       end
     end
 
+    context "when :full_matrix is used" do
+      let(:options) { { strategy: :full_matrix } }
+
       it "returns Levenshtein distance" do
-        expect(described_class.distance("kitten", "sitting")).to eq 3
+        expect(described_class.distance("kitten", "sitting", options)).to eq 3
       end
     end
   end

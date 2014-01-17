@@ -10,6 +10,8 @@ module StringMetric
       case options[:strategy]
       when :recursive
         recursive(a, b)
+      when :full_matrix
+        iterative_with_full_matrix(a, b)
       end
     end
     module_function :distance
@@ -31,5 +33,31 @@ module StringMetric
     end
     module_function :recursive
     private_class_method :recursive
+
+    def iterative_with_full_matrix(a, b)
+      d = (0..b.size).map do |i|
+        [0] * (a.size + 1)
+      end
+
+      (1..a.size).to_a.each { |j| d[0][j] = j }
+      (1..b.size).to_a.each { |i| d[i][0] = i }
+
+      (1..a.size).to_a.each do |j|
+        (1..b.size).to_a.each do |i|
+          if a[j-1] == b[i-1]
+            d[i][j] = d[i -1][j-1]
+          else
+            d[i][j] = [d[i-1][j] + 1,
+                       d[i][j-1] + 1,
+                       d[i-1][j-1] + 1].min
+          end
+        end
+      end
+
+      d[b.size][a.size]
+    end
+    module_function :iterative_with_full_matrix
+    private_class_method :iterative_with_full_matrix
+
   end
 end
