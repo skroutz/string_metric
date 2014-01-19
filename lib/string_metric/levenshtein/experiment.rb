@@ -19,6 +19,8 @@ module StringMetric
         end
 
         options.delete(:strategy)
+
+        # Call default distance implementation
         Levenshtein.distance(from, to, options)
       end
     end

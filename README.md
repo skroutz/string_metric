@@ -1,6 +1,7 @@
 # StringMetric
 
-A simple library with String Metric algorithms
+A simple library with String Metric algorithms. If you want to read more about
+String Metric algorithms please visit [this page](https://en.wikipedia.org/wiki/String_metric).
 
 ## Installation
 
@@ -13,6 +14,7 @@ This gem is under development. First version will be published 31/01/2014.
 ## References
 
 [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+[String Metric][https://en.wikipedia.org/wiki/String_metric]
 
 ## Contributing
 
