@@ -2,5 +2,5 @@
 require "spec_helper"
 
 describe StringMetric::Levenshtein::Recursive do
-  it_behaves_like "Levenshtein Distance"
+  it_behaves_like "Levenshtein Distance", { strategy: :recursive }
 end

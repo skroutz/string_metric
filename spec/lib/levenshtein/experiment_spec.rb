@@ -2,5 +2,5 @@
 require "spec_helper"
 
 describe StringMetric::Levenshtein::Experiment do
-  it_behaves_like "Levenshtein Distance"
+  it_behaves_like "Levenshtein Distance", { strategy: :experiment }
 end
