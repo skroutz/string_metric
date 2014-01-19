@@ -4,11 +4,15 @@ A simple library with String Metric algorithms
 
 ## Installation
 
-This gem is under development. There is no ETA yet.
+This gem is under development. First version will be published 31/01/2014.
 
 ## Usage
 
 (coming soon)
+
+## References
+
+[Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
 
 ## Contributing
 
