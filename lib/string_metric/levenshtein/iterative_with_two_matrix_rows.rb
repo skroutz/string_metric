@@ -21,8 +21,8 @@ module StringMetric
             cost = (from[j] == to[i]) ? 0 : 1
 
             v1[j + 1] = [v1[j] + 1,
-                             v0[j  + 1] + 1,
-                             v0[j] + cost].min
+                         v0[j  + 1] + 1,
+                         v0[j] + cost].min
           end
 
           v0 = v1.dup
