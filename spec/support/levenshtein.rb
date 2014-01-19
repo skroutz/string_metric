@@ -1,3 +1,5 @@
+require "csv"
+
 shared_examples "Levenshtein Distance" do |options|
   options ||= {}
   describe ".distance" do
@@ -30,5 +32,14 @@ shared_examples "Levenshtein Distance" do |options|
       end
     end
 
+    CSV.foreach("spec/fixtures/levenshtein.csv") do |row|
+      from, to, distance = row
+      from = from.to_s.strip
+      to   = to.to_s.strip
+
+      it "calculates the distance from '#{from}' to '#{to}' correctly" do
+        expect(described_class.distance(from, to, options)).to eq distance.to_i
+      end
+    end
   end
 end
