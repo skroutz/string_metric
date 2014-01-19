@@ -13,24 +13,27 @@ This gem is under development. First version will be published 31/01/2014.
 
 ## References
 
-[Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
-[String Metric][https://en.wikipedia.org/wiki/String_metric]
+* [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+* [String Metric](https://en.wikipedia.org/wiki/String_metric)
 
 ## Benchmarks
 
 You can run benchmarks with
 
+```
   $ bundle exec ruby benchmarks/*
+```
 
 or you can choose to benchmark a specific algorithm like:
 
+```
   $ bundle exec ruby benchmarks/levenshtein.rb
+```
 
 ## Current Benchmarks status
 
-_Levenshtein_
+__Levenshtein__
 
-Currentyl the set of fixtures is very small
 
 Implementation                              | User      | Real
 --------------------------------------------|-----------|-----------
@@ -39,9 +42,11 @@ Levenshtein::IterativeWithTwoMatrixRows     | 0.350000  | 0.352388
 Levenshtein::Experiment                     | 0.420000  | 0.420000
 Text::Levenshtein (from gem text)           | 0.400000  | 0.400346
 
+_Currently the set of fixtures is very small_
+
 ## Other implementations
 
-_Levenshtein_
+__Levenshtein__
 
 * this beautiful gem, [text](https://github.com/threedaymonk/text)
 
