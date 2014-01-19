@@ -1,32 +1,19 @@
 require "benchmark"
 require "string_metric"
 require "text"
+require "pry"
 
 Benchmark.bmbm(7) do |x|
 
-  iterations = 10_000
+  iterations = 1_000
 
-  x.report("Recursive implementation") do
-    (1..100).each do |i|
-      StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :recursive)
-    end
-  end
+  options = {}
 
-  x.report("Full Matrix implementation") do
-    iterations.times do |i|
-      StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :full_matrix)
-    end
-  end
-
-  x.report("Two Matrix rows implementation") do
-    iterations.times do |i|
-      StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :two_matrix_rows)
-    end
-  end
-
-  x.report("Experiment implementation") do
-    iterations.times do |i|
-      StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :experiment)
+  StringMetric::Levenshtein::STRATEGIES.each do |strategy, implementation|
+    x.report("#{implementation.to_s} implementation") do
+      iterations.times do |i|
+        implementation.distance("kitten", "sitting", options)
+      end
     end
   end
 
