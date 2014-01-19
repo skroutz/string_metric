@@ -2,19 +2,19 @@ shared_examples "Levenshtein Distance" do
   describe ".distance" do
     context "when the two strings are equal" do
       it "is 0" do
-        expect(described_class.distance("myrsini", "myrsini")).to eq 0
+        expect(described_class.distance("kitten", "kitten")).to eq 0
       end
     end
 
     context "when the first string is empty" do
       it "is the size of the second string" do
-        expect(described_class.distance("","myrsini")).to eq("myrsini".size)
+        expect(described_class.distance("","kitten")).to eq("kitten".size)
       end
     end
 
     context "when the second string is empty" do
       it "is the size of the first string" do
-        expect(described_class.distance("myrsini","")).to eq("myrsini".size)
+        expect(described_class.distance("kitten","")).to eq("kitten".size)
       end
     end
 
@@ -39,7 +39,6 @@ shared_examples "Levenshtein Distance" do
 
       it "returns Levenshtein distance" do
         expect(described_class.distance("kitten", "sitting", options)).to eq 3
-        expect(described_class.distance("Sete", "ete", options)).to eq 1
       end
     end
 
