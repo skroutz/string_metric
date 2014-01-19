@@ -4,7 +4,7 @@ require "text"
 
 Benchmark.bmbm(7) do |x|
 
-  iterations = 100
+  iterations = 10_000
 
   x.report("Recursive implementation") do
     (1..100).each do |i|
@@ -21,6 +21,12 @@ Benchmark.bmbm(7) do |x|
   x.report("Two Matrix rows implementation") do
     iterations.times do |i|
       StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :two_matrix_rows)
+    end
+  end
+
+  x.report("Experiment implementation") do
+    iterations.times do |i|
+      StringMetric::Levenshtein.distance("kitten", "sitting", strategy: :experiment)
     end
   end
 
