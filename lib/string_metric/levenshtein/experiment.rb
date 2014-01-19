@@ -3,23 +3,23 @@
 module StringMetric
   module Levenshtein
     class Experiment
-      def self.distance(str1, str2, options = {})
-        return 0 if str1 == str2
-        return str2.size if str1.size.zero?
-        return str1.size if str2.size.zero?
+      def self.distance(from, to, options = {})
+        return 0 if from == to
+        return to.size if from.size.zero?
+        return from.size if to.size.zero?
 
-        m = str1.length
-        n = str2.length
+        m = from.length
+        n = to.length
 
         [m, n].min.times do |i|
-          if str1[i] == str2[i]
-            str1.slice!(i)
-            str2.slice!(i)
+          if from[i] == to[i]
+            from.slice!(i)
+            to.slice!(i)
           end
         end
 
         options.delete(:strategy)
-        Levenshtein.distance(str1, str2, options)
+        Levenshtein.distance(from, to, options)
       end
     end
   end

@@ -15,9 +15,9 @@ module StringMetric
       two_matrix_rows: IterativeWithTwoMatrixRows,
     }
 
-    def distance(str1, str2, options = {})
+    def distance(from, to, options = {})
       strategy = pick_strategy(options[:strategy]) || Levenshtein.default_strategy
-      args = [str1, str2, options]
+      args = [from, to, options]
 
       strategy.distance(*args)
     end

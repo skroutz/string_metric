@@ -3,13 +3,13 @@
 module StringMetric
   module Levenshtein
     class IterativeWithTwoMatrixRows
-      def self.distance(str1, str2, options = {})
-        return 0 if str1 == str2
-        return str2.size if str1.size.zero?
-        return str1.size if str2.size.zero?
+      def self.distance(from, to, options = {})
+        return 0 if from == to
+        return to.size if from.size.zero?
+        return from.size if to.size.zero?
 
-        m = str1.length
-        n = str2.length
+        m = from.length
+        n = to.length
 
         v0 = (0..m).to_a
         v1 = []
@@ -18,7 +18,7 @@ module StringMetric
           v1[0] = i + 1
 
           m.times do |j|
-            cost = (str1[j] == str2[i]) ? 0 : 1
+            cost = (from[j] == to[i]) ? 0 : 1
 
             v1[j + 1] = [v1[j] + 1,
                              v0[j  + 1] + 1,
