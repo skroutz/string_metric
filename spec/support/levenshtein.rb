@@ -2,6 +2,7 @@ require "csv"
 
 shared_examples "Levenshtein Distance" do |options|
   options ||= {}
+
   describe ".distance" do
     context "when the two strings are equal" do
       it "is 0" do
