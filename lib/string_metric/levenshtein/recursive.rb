@@ -14,9 +14,19 @@ module StringMetric
           cost = 1
         end
 
-        return [distance(from.chop, to) + 1,
-                distance(from, to.chop) + 1,
-                distance(from.chop, to.chop) + cost].min
+        max_distance = options[:max_distance]
+
+        if max_distance
+          return [distance(from.chop, to, options) + 1,
+                  distance(from, to.chop, options) + 1,
+                  distance(from.chop, to.chop, options) + cost,
+                  max_distance].min
+        else
+          return [distance(from.chop, to, options) + 1,
+                  distance(from, to.chop, options) + 1,
+                  distance(from.chop, to.chop, options) + cost].min
+
+        end
       end
     end
   end

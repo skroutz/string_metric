@@ -18,5 +18,17 @@ shared_examples "Levenshtein Distance" do |options|
         expect(described_class.distance("kitten","", options)).to eq("kitten".size)
       end
     end
+
+    context "when max_distance is passed as option" do
+      context "and normal distance is greater than max_distance" do
+        let(:max_distance) { 2 }
+
+        it "is trimmed to max_distance" do
+          expect(described_class.distance("kitten", "sitting",
+            max_distance: max_distance)).to eq max_distance
+        end
+      end
+    end
+
   end
 end

@@ -8,6 +8,8 @@ module StringMetric
         return to.size if from.size.zero?
         return from.size if to.size.zero?
 
+        max_distance = options[:max_distance]
+
         d = (0..to.size).map do |i|
           [0] * (from.size + 1)
         end
@@ -20,14 +22,22 @@ module StringMetric
             if from[j-1] == to[i-1]
               d[i][j] = d[i -1][j-1]
             else
-              d[i][j] = [d[i-1][j] + 1,
-                         d[i][j-1] + 1,
-                         d[i-1][j-1] + 1].min
+              d[i][j] = [d[i-1][j] + 1,   # deletion
+                         d[i][j-1] + 1,   # insertion
+                         d[i-1][j-1] + 1  # substitution
+                        ].min
             end
           end
+
+          break if max_distance and d[j][j] > max_distance
         end
 
-        d[to.size][from.size]
+        x = d[to.size][from.size]
+        if max_distance && x > max_distance
+          max_distance
+        else
+          x
+        end
       end
     end
   end
