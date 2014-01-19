@@ -16,17 +16,17 @@ module StringMetric
     }
 
     def distance(str1, str2, options = {})
-      strategy = pick_strategy(options[:strategy]) || Levenshtein.default
+      strategy = pick_strategy(options[:strategy]) || Levenshtein.default_strategy
       args = [str1, str2, options]
 
       strategy.distance(*args)
     end
     module_function :distance
 
-    def default
+    def default_strategy
       pick_strategy(:two_matrix_rows)
     end
-    module_function :default
+    module_function :default_strategy
 
     def pick_strategy(symbol)
       STRATEGIES[symbol]
