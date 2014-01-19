@@ -1,24 +1,8 @@
-# coding: utf-8
-
-require "spec_helper"
-
-describe StringMetric::Levenshtein do
+shared_examples "Levenshtein Distance" do
   describe ".distance" do
     context "when the two strings are equal" do
       it "is 0" do
         expect(described_class.distance("myrsini", "myrsini")).to eq 0
-      end
-    end
-
-    context "when the first string is nil" do
-      it "is the size of the second string" do
-        expect(described_class.distance(nil, "μυρσίνη")).to eq("μυρσίνη".size)
-      end
-    end
-
-    context "when the second string is nil" do
-      it "is the size of the first string" do
-        expect(described_class.distance("μυρσινάκι", nil)).to eq("μυρσινάκι".size)
       end
     end
 
@@ -42,14 +26,6 @@ describe StringMetric::Levenshtein do
       end
     end
 
-    context "when :recursive_memoized is used" do
-      let(:options) { { strategy: :recursive_memoized } }
-
-      it "returns Levenshtein distance" do
-        expect(described_class.distance("kitten", "sitting", options)).to eq 3
-      end
-    end
-
     context "when :full_matrix is used" do
       let(:options) { { strategy: :full_matrix } }
 
@@ -60,6 +36,15 @@ describe StringMetric::Levenshtein do
 
     context "when :two_matrix_rows is used" do
       let(:options) { { strategy: :two_matrix_rows } }
+
+      it "returns Levenshtein distance" do
+        expect(described_class.distance("kitten", "sitting", options)).to eq 3
+        expect(described_class.distance("Sete", "ete", options)).to eq 1
+      end
+    end
+
+    context "when :experiment is used" do
+      let(:options) { { strategy: :experiment } }
 
       it "returns Levenshtein distance" do
         expect(described_class.distance("kitten", "sitting", options)).to eq 3
