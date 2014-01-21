@@ -8,23 +8,25 @@ module StringMetric
         return to.size if from.size.zero?
         return from.size if to.size.zero?
 
+        max_distance = options[:max_distance]
+
         if from.chars.last == to.chars.last
           cost = 0
         else
           cost = 1
         end
 
-        max_distance = options[:max_distance]
-
         if max_distance
           return [distance(from.chop, to, options) + 1,
                   distance(from, to.chop, options) + 1,
                   distance(from.chop, to.chop, options) + cost,
-                  max_distance].min
+                  max_distance
+                 ].min
         else
           return [distance(from.chop, to, options) + 1,
                   distance(from, to.chop, options) + 1,
-                  distance(from.chop, to.chop, options) + cost].min
+                  distance(from.chop, to.chop, options) + cost
+                 ].min
 
         end
       end

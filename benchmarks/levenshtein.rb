@@ -6,7 +6,7 @@ require "csv"
 
 Benchmark.bmbm(7) do |x|
 
-  iterations = 3_000
+  iterations = 10_000
   options = {}
 
   fixtures = []

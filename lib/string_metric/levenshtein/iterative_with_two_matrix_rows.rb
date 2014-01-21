@@ -8,14 +8,13 @@ module StringMetric
         return to.size if from.size.zero?
         return from.size if to.size.zero?
 
+        max_distance = options[:max_distance]
+
         m = from.length
         n = to.length
 
         v0 = (0..m).to_a
         v1 = []
-
-        max_distance = options[:max_distance]
-
         x = 0
 
         n.times do |i|
@@ -31,7 +30,7 @@ module StringMetric
             x = [x + 1,           # deletion
                  ins_cell + 1,    # insertion
                  sub_cell + cost  # substitution
-                 ].min
+                ].min
 
 
             v1[j + 1] = x
