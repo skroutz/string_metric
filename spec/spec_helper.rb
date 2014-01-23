@@ -7,6 +7,9 @@
 
 require "string_metric"
 require "pry"
+require 'coveralls'
+
+Coveralls.wear!
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
