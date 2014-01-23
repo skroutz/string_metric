@@ -1,8 +1,11 @@
 require "benchmark"
 require "string_metric"
 require "text"
-require "pry"
 require "csv"
+
+if RUBY_ENGINE == "ruby"
+  require "pry"
+end
 
 Benchmark.bmbm(7) do |x|
 
