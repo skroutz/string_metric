@@ -42,5 +42,12 @@ shared_examples "Levenshtein Distance" do |options|
         expect(described_class.distance(from, to, options)).to eq distance.to_i
       end
     end
+
+    context "when insertion_cost is passed" do
+      it "takes this cost into account" do
+        expect(described_class.distance("kitten", "sitting", insertion_cost: 1)).not_to eq(
+        described_class.distance("kitten", "sitting", insertion_cost: 2))
+      end
+    end
   end
 end

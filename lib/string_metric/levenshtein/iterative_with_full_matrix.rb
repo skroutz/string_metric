@@ -8,7 +8,10 @@ module StringMetric
         return to.size if from.size.zero?
         return from.size if to.size.zero?
 
-        max_distance = options[:max_distance]
+        max_distance      = options[:max_distance]
+        insertion_cost    = options.fetch(:insertion_cost, 1)
+        deletion_cost     = options.fetch(:deletion_cost, 1)
+        substitution_cost = options.fetch(:substitution_cost, 1)
 
         d = (0..to.size).map do |i|
           [0] * (from.size + 1)
@@ -22,9 +25,9 @@ module StringMetric
             if from[j-1] == to[i-1]
               d[i][j] = d[i -1][j-1]
             else
-              d[i][j] = [d[i-1][j] + 1,   # deletion
-                         d[i][j-1] + 1,   # insertion
-                         d[i-1][j-1] + 1  # substitution
+              d[i][j] = [d[i-1][j]   + insertion_cost,    # insertion
+                         d[i][j-1]   + deletion_cost,     # deletion
+                         d[i-1][j-1] + substitution_cost  # substitution
                         ].min
             end
           end

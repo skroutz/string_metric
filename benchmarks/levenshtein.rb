@@ -7,7 +7,7 @@ require "csv"
 Benchmark.bmbm(7) do |x|
 
   iterations = 10_000
-  options = {}
+  options = { insertion_cost: 2 }
 
   fixtures = []
   CSV.foreach("spec/fixtures/levenshtein.csv") do |row|

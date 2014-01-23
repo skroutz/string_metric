@@ -15,7 +15,7 @@ module StringMetric
       experiment:   Experiment,
       full_matrix:  IterativeWithFullMatrix,
       recursive:    Recursive,
-      two_matrix_rows: IterativeWithTwoMatrixRows,
+      two_matrix_rows: IterativeWithTwoMatrixRows
     }
 
     # Levenshtein Distance of two strings
