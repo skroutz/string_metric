@@ -22,8 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.1.1"
   spec.add_development_dependency "rspec", "~> 2.14.1"
   spec.add_development_dependency "text", "~> 1.2.3"
-  spec.add_development_dependency "coveralls", "~> 0.7.0"
-
 
   if RUBY_ENGINE == "ruby"
     if RUBY_VERSION > "1.9.3"
