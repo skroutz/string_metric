@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/chief/string_metric.png?branch=master)](https://travis-ci.org/chief/string_metric)
 
+[![Code Climate](https://codeclimate.com/github/chief/string_metric.png)](https://codeclimate.com/github/chief/string_metric)
+
 A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please visit [this page](https://en.wikipedia.org/wiki/String_metric).
 
