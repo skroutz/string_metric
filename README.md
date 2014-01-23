@@ -4,6 +4,8 @@
 
 [![Code Climate](https://codeclimate.com/github/chief/string_metric.png)](https://codeclimate.com/github/chief/string_metric)
 
+[![Coverage Status](https://coveralls.io/repos/chief/string_metric/badge.png)](https://coveralls.io/r/chief/string_metric)
+
 A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please visit [this page](https://en.wikipedia.org/wiki/String_metric).
 
