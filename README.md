@@ -9,7 +9,18 @@ This gem is under development. First version will be published 31/01/2014.
 
 ## Usage
 
-(coming soon)
+### Levenshtein Distance
+
+```ruby
+  StringMetric::Levenshtein.distance("kitten", "sitting") # => 3
+
+  # passing :max_distance option
+  StringMetric::Levenshtein.distance("kitten", "sitting", max_distance: 2) # => 2
+
+  # passing different costs for increase, delete, substitute actions
+  StringMetric::Levenshtein.distance("kitten", "sitting", insertion_cost: 2,
+    deletion_cost: 2, substitution_cost: 2) # => 6
+```
 
 ## References
 
