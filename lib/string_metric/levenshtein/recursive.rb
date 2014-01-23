@@ -13,7 +13,7 @@ module StringMetric
         deletion_cost     = options.fetch(:deletion_cost, 1)
         substitution_cost = options.fetch(:substitution_cost, 1)
 
-        if from.chars.last == to.chars.last
+        if from.chars.to_a.last == to.chars.to_a.last
           cost = 0
         else
           cost = substitution_cost
