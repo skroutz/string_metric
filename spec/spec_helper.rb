@@ -12,7 +12,6 @@ if RUBY_ENGINE == "ruby"
 end
 
 require 'coveralls'
-
 Coveralls.wear!
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
