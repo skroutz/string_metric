@@ -24,9 +24,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "text"
   spec.add_development_dependency "coveralls"
 
-  if RUBY_VERSION > "1.9.3"
-    spec.add_development_dependency "pry-byebug"
-  else
-    spec.add_development_dependency "pry"
+
+  if RUBY_ENGINE == "ruby"
+    if RUBY_VERSION > "1.9.3"
+      spec.add_development_dependency "pry-byebug"
+    else
+      spec.add_development_dependency "pry"
+    end
   end
 end

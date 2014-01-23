@@ -6,7 +6,11 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "string_metric"
-require "pry"
+
+if RUBY_ENGINE == "ruby"
+  require "pry"
+end
+
 require 'coveralls'
 
 Coveralls.wear!
