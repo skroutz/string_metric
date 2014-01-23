@@ -1,9 +1,7 @@
 # StringMetric
 
 [![Build Status](https://travis-ci.org/chief/string_metric.png?branch=master)](https://travis-ci.org/chief/string_metric)
-
 [![Code Climate](https://codeclimate.com/github/chief/string_metric.png)](https://codeclimate.com/github/chief/string_metric)
-
 [![Coverage Status](https://coveralls.io/repos/chief/string_metric/badge.png)](https://coveralls.io/r/chief/string_metric)
 
 A simple library with String Metric algorithms. If you want to read more about
