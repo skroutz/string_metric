@@ -5,7 +5,9 @@
 [![Coverage Status](https://coveralls.io/repos/chief/string_metric/badge.png)](https://coveralls.io/r/chief/string_metric)
 
 A simple library with String Metric algorithms. If you want to read more about
-String Metric algorithms please visit [this page](https://en.wikipedia.org/wiki/String_metric).
+String Metric algorithms please read [here](https://en.wikipedia.org/wiki/String_metric).
+
+This library wants to support MRI (1.9.3, 2.0.0, 2.1.0), JRuby and Rubinious.
 
 ## Installation
 
@@ -16,14 +18,21 @@ This gem is under development. First version will be published 31/01/2014.
 ### Levenshtein Distance
 
 ```ruby
+
+  require 'string_metric'
+
   StringMetric::Levenshtein.distance("kitten", "sitting") # => 3
 
-  # passing :max_distance option
-  StringMetric::Levenshtein.distance("kitten", "sitting", max_distance: 2) # => 2
+  # Trim distance to :max_distance
+  StringMetric::Levenshtein.distance("kitten", "sitting",
+    max_distance: 2) # => 2
 
-  # passing different costs for increase, delete, substitute actions
-  StringMetric::Levenshtein.distance("kitten", "sitting", insertion_cost: 2,
-    deletion_cost: 2, substitution_cost: 2) # => 6
+  # Pass different costs for increase, delete or substitute actions
+  StringMetric::Levenshtein.distance("kitten", "sitting",
+    insertion_cost: 2,
+    deletion_cost:  2,
+    substitution_cost: 2) # => 6
+
 ```
 
 ## References
@@ -64,6 +73,10 @@ _Currently the set of fixtures is very small_
 __Levenshtein__
 
 * this beautiful gem, [text](https://github.com/threedaymonk/text)
+* ffi implementations, like [this](https://github.com/dbalatero/levenshtein-ffi) or check [The Ruby Toolbox](https://www.ruby-toolbox.com/projects/levenshtein-ffi)
+
+__Various__
+* Approximate String matching [library](https://github.com/flori/amatch)
 
 
 ## Contributing
