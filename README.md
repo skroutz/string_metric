@@ -7,7 +7,8 @@
 A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please read [here](https://en.wikipedia.org/wiki/String_metric).
 
-This library wants to support MRI (1.9.3, 2.0.0, 2.1.0), JRuby and Rubinious.
+This library wants to support __MRI__ (1.9.3, 2.0.0, 2.1.0), __JRuby__ and
+__Rubinious__.
 
 ## Installation
 
@@ -21,17 +22,20 @@ This gem is under development. First version will be published 31/01/2014.
 
   require 'string_metric'
 
-  StringMetric::Levenshtein.distance("kitten", "sitting") # => 3
+  StringMetric::Levenshtein.distance("kitten", "sitting")
+  # Generates: 3
 
   # Trim distance to :max_distance
   StringMetric::Levenshtein.distance("kitten", "sitting",
-    max_distance: 2) # => 2
+    max_distance: 2)
+  # Generates: 2
 
   # Pass different costs for increase, delete or substitute actions
   StringMetric::Levenshtein.distance("kitten", "sitting",
     insertion_cost: 2,
     deletion_cost:  2,
-    substitution_cost: 2) # => 6
+    substitution_cost: 2)
+  # Generates: 6
 
 ```
 
