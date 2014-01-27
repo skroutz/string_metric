@@ -23,7 +23,15 @@ module StringMetric
     # @param from [String] the first string
     # @param to [String] the second string
     # @param options [Hash] options
-    # @return [Integer] the Levenshtein Distance
+    # @option options [Fixnum, Float] :max_distance If this option is passed then
+    #   levenstein distance is trimmed to this value (if greater)
+    # @option options [Fixnum, Float] :insertion_cost If this option is passed then
+    #   new insertion cost is taken into account (by default is 1)
+    # @option options [Fixnum, Float] :deletion_cost If this option is passed then
+    #   new deletion cost is taken into account (by default is 1)
+    # @option options [Fixnum, Float] :substitution_cost If this option is passed then
+    #   new substitution cost is taken into account (be default is 1)
+    # @return [Fixnum, Float] the Levenshtein Distance
     def distance(from, to, options = {})
       strategy = pick_strategy(options[:strategy]) || Levenshtein.default_strategy
       args = [from, to, options]
