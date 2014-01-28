@@ -40,6 +40,7 @@ module StringMetric
     end
     module_function :distance
 
+    # Currently the default strategy is set to IterativeWithTwoMatrixRows
     def default_strategy
       pick_strategy(:two_matrix_rows)
     end
