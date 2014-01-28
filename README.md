@@ -106,6 +106,10 @@ __Levenshtein__
 __Various__
 * Approximate String matching [library](https://github.com/flori/amatch)
 
+## Tools
+
+* Try to use [SemVer](http://semver.org/)
+
 
 ## Contributing
 
