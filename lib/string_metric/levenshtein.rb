@@ -31,6 +31,10 @@ module StringMetric
     #   new deletion cost is taken into account (by default is 1)
     # @option options [Fixnum, Float] :substitution_cost If this option is passed then
     #   new substitution cost is taken into account (be default is 1)
+    # @option options [Symbol] :strategy The desired strategy for Levenshtein
+    #   distance. Supported strategies are :recursive, :two_matrix_rows,
+    #   :full_matrix and :experiment. The default strategy is :two_matrix_rows.
+    #   One should not depend on :experiment strategy.
     # @return [Fixnum, Float] the Levenshtein Distance
     def distance(from, to, options = {})
       strategy = pick_strategy(options[:strategy]) || Levenshtein.default_strategy

@@ -18,6 +18,30 @@ This gem is under development. First version will be published 31/01/2014.
 
 ### Levenshtein Distance
 
+The public api for Levenshtein Distance is the method
+`StringMetric::Levenshtein.distance`.
+
+__Options__
+
+* `:max_distance`: It sets an upper limit for the calculated distance. Can be
+  `Fixnum` or `Float`.
+
+* `:insertion_cost`: It overrides the default (equals to 1) insertion penalty.
+   Can be `Fixnum` or `Float`.
+
+* `:deletion_cost`: It overrides the default (equals to 1) deletion penanty.
+  Can be `Fixnum` or `Float`.
+
+* `:subsctitution_cost`: It overrides the default (equals to 1) substitution
+  penalty. Can be `Fixum` or `Float`.
+
+* `:strategy`: The desired strategy for Levenshtein distance. Supported
+  strategies are `:recursive`, `:two_matrix_rows`, `:full_matrix` and
+  `:experiment`. The default strategy is `:two_matrix_rows`. One should not
+  depend on `:experiment` strategy.
+
+__Examples__
+
 ```ruby
 
   require 'string_metric'
