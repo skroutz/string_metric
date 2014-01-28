@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/skroutz/string_metric.png?branch=master)](https://travis-ci.org/skroutz/string_metric)
 [![Code Climate](https://codeclimate.com/github/skroutz/string_metric.png)](https://codeclimate.com/github/skroutz/string_metric)
-[![Coverage Status](https://coveralls.io/repos/skroutz/string_metric/badge.png)](https://coveralls.io/r/skroutz/string_metric)
+[![Coverage Status](https://coveralls.io/repos/skroutz/string_metric/badge.png)](https://coveralls.io/r/skroutz/string_metric?branch=master)
 
 A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please read [here](https://en.wikipedia.org/wiki/String_metric).
