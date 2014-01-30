@@ -12,7 +12,17 @@ __Rubinious__.
 
 ## Installation
 
-This gem is under development. First version will be published 31/01/2014.
+Add this line to your application's Gemfile:
+
+    gem 'string_metric'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install string_metric
 
 ## Usage
 
