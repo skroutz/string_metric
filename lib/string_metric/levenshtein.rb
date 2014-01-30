@@ -2,6 +2,7 @@
 
 require_relative "levenshtein/experiment"
 require_relative "levenshtein/iterative_with_two_matrix_rows"
+require_relative "levenshtein/iterative_with_two_matrix_rows_optimized"
 require_relative "levenshtein/iterative_with_full_matrix"
 require_relative "levenshtein/recursive"
 
@@ -15,7 +16,8 @@ module StringMetric
       experiment:   Experiment,
       full_matrix:  IterativeWithFullMatrix,
       recursive:    Recursive,
-      two_matrix_rows: IterativeWithTwoMatrixRows
+      two_matrix_rows:    IterativeWithTwoMatrixRows,
+      two_matrix_rows_v2: IterativeWithTwoMatrixRowsOptimized
     }
 
     # Levenshtein Distance of two strings
@@ -46,7 +48,11 @@ module StringMetric
 
     # Currently the default strategy is set to IterativeWithTwoMatrixRows
     def default_strategy
-      pick_strategy(:two_matrix_rows)
+      if RUBY_ENGINE == "ruby"
+        pick_strategy(:two_matrix_rows_v2)
+      else
+        pick_strategy(:two_matrix_rows)
+      end
     end
     module_function :default_strategy
 
