@@ -10,7 +10,7 @@ A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please read [here](https://en.wikipedia.org/wiki/String_metric).
 
 This library wants to support __MRI__ (1.9.3, 2.0.0, 2.1.0), __JRuby__ and
-__Rubinious__.
+__Rubinius__.
 
 ## Installation
 
