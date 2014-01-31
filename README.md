@@ -97,15 +97,15 @@ or you can choose to benchmark a specific algorithm like:
 
 __Levenshtein__
 
+Implementation                                   | User      | Real
+-------------------------------------------------|-----------|-----------
+Levenshtein::IterativeWithFullMatrix             | 1.490000  | 1.502395
+Levenshtein::IterativeWithTwoMatrixRows          | 1.240000  | 1.241995
+Levenshtein::Experiment                          | 1.400000  | 1.397641
+Levenshtein::IterativeWithTwoMatrixRowsOptimized | 1.110000  | 1.115596
+Text::Levenshtein (from gem text)                | 1.360000  | 1.371572
 
-Implementation                              | User      | Real
---------------------------------------------|-----------|-----------
-Levenshtein::IterativeWithFullMatrix        | 0.480000  | 0.475662
-Levenshtein::IterativeWithTwoMatrixRows     | 0.350000  | 0.352388
-Levenshtein::Experiment                     | 0.420000  | 0.420000
-Text::Levenshtein (from gem text)           | 0.400000  | 0.400346
-
-_Currently the set of fixtures is very small_
+_Currently the set of fixtures is very small - ruby 2.1.0 is used_
 
 ## Other implementations
 
