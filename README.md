@@ -4,6 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/skroutz/string_metric.png)](https://codeclimate.com/github/skroutz/string_metric)
 [![Coverage Status](https://coveralls.io/repos/skroutz/string_metric/badge.png?branch=master)](https://coveralls.io/r/skroutz/string_metric?branch=master)
 [![Gem Version](https://badge.fury.io/rb/string_metric.png)](http://badge.fury.io/rb/string_metric)
+[![Dependency Status](https://gemnasium.com/skroutz/string_metric.png)](https://gemnasium.com/skroutz/string_metric)
 
 A simple library with String Metric algorithms. If you want to read more about
 String Metric algorithms please read [here](https://en.wikipedia.org/wiki/String_metric).
