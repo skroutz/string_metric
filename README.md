@@ -44,7 +44,7 @@ __Options__
 * `:deletion_cost`: It overrides the default (equals to 1) deletion penanty.
   Can be `Fixnum` or `Float`.
 
-* `:subsctitution_cost`: It overrides the default (equals to 1) substitution
+* `:substitution_cost`: It overrides the default (equals to 1) substitution
   penalty. Can be `Fixum` or `Float`.
 
 * `:strategy`: The desired strategy for Levenshtein distance. Supported
