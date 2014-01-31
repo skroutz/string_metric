@@ -35,7 +35,8 @@ module StringMetric
     #   new substitution cost is taken into account (be default is 1)
     # @option options [Symbol] :strategy The desired strategy for Levenshtein
     #   distance. Supported strategies are :recursive, :two_matrix_rows,
-    #   :full_matrix and :experiment. The default strategy is :two_matrix_rows.
+    #   :full_matrix, :two_matrix_rows_v2 and :experiment. The default strategy
+    #   is :two_matrix_rows_v2 for MRI and :two_matrix_rows for other platforms.
     #   One should not depend on :experiment strategy.
     # @return [Fixnum, Float] the Levenshtein Distance
     def distance(from, to, options = {})

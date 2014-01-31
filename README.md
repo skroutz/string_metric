@@ -47,9 +47,10 @@ __Options__
   penalty. Can be `Fixum` or `Float`.
 
 * `:strategy`: The desired strategy for Levenshtein distance. Supported
-  strategies are `:recursive`, `:two_matrix_rows`, `:full_matrix` and
-  `:experiment`. The default strategy is `:two_matrix_rows`. One should not
-  depend on `:experiment` strategy.
+  strategies are `:recursive`, `:two_matrix_rows`, `:two_matrix_rows_v2`,
+  `:full_matrix` and `:experiment`. The default strategy is
+  `:two_matrix_rows_v2` for MRI and `:two_matrix_rows` for other platforms
+  One should not depend on `:experiment` strategy.
 
 __Examples__
 
