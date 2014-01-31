@@ -33,9 +33,7 @@ module StringMetric
             x = [x + deletion_cost,         # deletion
                  ins_cell + insertion_cost, # insertion
                  sub_cell + cost            # substitution
-                ].sort!
-
-            x = x[0]
+                ].sort![0]
 
             v1[j + 1] = x
 
