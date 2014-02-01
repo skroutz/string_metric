@@ -101,11 +101,11 @@ __Levenshtein__
 
 Implementation                                   | User      | Real
 -------------------------------------------------|-----------|-----------
-Levenshtein::IterativeWithFullMatrix             | 1.490000  | 1.502395
-Levenshtein::IterativeWithTwoMatrixRows          | 1.240000  | 1.241995
-Levenshtein::Experiment                          | 1.400000  | 1.397641
-Levenshtein::IterativeWithTwoMatrixRowsOptimized | 1.110000  | 1.115596
-Text::Levenshtein (from gem text)                | 1.360000  | 1.371572
+Levenshtein::IterativeWithFullMatrix             | 2.270000  | 2.272204
+Levenshtein::IterativeWithTwoMatrixRows          | 1.980000  | 1.986655
+Levenshtein::Experiment                          | 1.840000  | 1.845010
+Levenshtein::IterativeWithTwoMatrixRowsOptimized | 1.430000  | 1.432544
+Text::Levenshtein (from gem text)                | 2.210000  | 2.212286
 
 _Currently the set of fixtures is very small - ruby 2.1.0 is used_
 
