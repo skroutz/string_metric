@@ -9,12 +9,15 @@ module StringMetric
         return from.size if to.size.zero?
 
         max_distance      = options[:max_distance]
-        insertion_cost    = options.fetch(:insertion_cost, 1)
-        deletion_cost     = options.fetch(:deletion_cost, 1)
-        substitution_cost = options.fetch(:substitution_cost, 1)
+        insertion_cost    = options[:insertion_cost]    || 1
+        deletion_cost     = options[:deletion_cost]     || 1
+        substitution_cost = options[:substitution_cost] || 1
 
         m = from.length
         n = to.length
+
+        from = from.chars
+        to = to.chars
 
         v0 = (0..m).to_a
         v1 = []
