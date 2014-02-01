@@ -28,7 +28,7 @@ module StringMetric
           m.times do |j|
             cost = (from[j] == to[i]) ? 0 : substitution_cost
 
-            ins_cell = v0[j+1]
+            ins_cell = v0[j + 1]
 
             x = [x + deletion_cost,         # deletion
                  ins_cell + insertion_cost, # insertion
