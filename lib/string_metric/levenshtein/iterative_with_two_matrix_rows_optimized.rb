@@ -16,8 +16,8 @@ module StringMetric
         m = from.length
         n = to.length
 
-        from = from.chars.to_a
-        to = to.chars.to_a
+        from = from.codepoints.to_a
+        to = to.codepoints.to_a
 
         v0 = (0..m).to_a
         v1 = []
