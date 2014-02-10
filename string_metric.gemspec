@@ -20,12 +20,14 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake", "~> 10.1.1"
+  spec.add_development_dependency "rake-compiler"
   spec.add_development_dependency "rspec", "~> 2.14.1"
   spec.add_development_dependency "text", "~> 1.2.3"
 
   if RUBY_ENGINE == "ruby"
     spec.add_development_dependency "rake-compiler", "~> 0.9.2"
-    spec.extensions << "ext/#{spec.name}/levenshtein/extconf.rb"
+    spec.extensions << "ext/#{spec.name}/levenshtein/trie_radix_tree/extconf.rb"
+    spec.extensions << "ext/#{spec.name}/levenshtein/iterative_with_two_matrix_rows/extconf.rb"
 
     if RUBY_VERSION > "1.9.3"
       spec.add_development_dependency "pry-byebug", "~> 1.2.1"

@@ -8,6 +8,7 @@ require_relative "levenshtein/recursive"
 require_relative "levenshtein/trie_node"
 require_relative "levenshtein/trie_radix_tree"
 require_relative "levenshtein/trie_radix_tree_ext"
+require_relative "levenshtein/iterative_with_two_matrix_rows_ext" if RUBY_ENGINE == "ruby"
 
 module StringMetric
   # Levenshtein Distance implementation
@@ -22,6 +23,10 @@ module StringMetric
       two_matrix_rows:    IterativeWithTwoMatrixRows,
       two_matrix_rows_v2: IterativeWithTwoMatrixRowsOptimized
     }
+
+    if RUBY_ENGINE == "ruby"
+      STRATEGIES[:two_matrix_rows_ext] = IterativeWithTwoMatrixRowsExt
+    end
 
     # Levenshtein Distance of two strings
     #
