@@ -24,10 +24,12 @@ if RUBY_ENGINE == "ruby"
     ext.gem_spec = spec
   end
 
-  task :default do
+  task :mri_default do
     Rake::Task["compile"].invoke
     Rake::Task["spec"].invoke
   end
+
+  task :default => :mri_default
 else
-  task default: :spec
+  task :default => :spec
 end
