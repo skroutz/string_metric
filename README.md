@@ -50,7 +50,7 @@ __Options__
 * `:strategy`: The desired strategy for Levenshtein distance. Supported
   strategies are `:recursive`, `:two_matrix_rows`, `:two_matrix_rows_v2`,
   `:full_matrix` and `:experiment`. The default strategy is
-  `:two_matrix_rows_v2` for MRI and `:two_matrix_rows` for other platforms
+  `:two_matrix_rows_v2` or `:two_matrix_rows_ext` for MRI and `:two_matrix_rows` for other platforms
   One should not depend on `:experiment` strategy.
 
 __Examples__
@@ -101,11 +101,12 @@ __Levenshtein__
 
 Implementation                                   | User      | Real
 -------------------------------------------------|-----------|-----------
-Levenshtein::IterativeWithFullMatrix             | 2.260000  | 2.265873
-Levenshtein::IterativeWithTwoMatrixRows          | 1.970000  | 1.971205
-Levenshtein::Experiment                          | 1.680000  | 1.684419
-Levenshtein::IterativeWithTwoMatrixRowsOptimized | 1.270000  | 1.269643
-Text::Levenshtein (from gem text)                | 2.180000  | 2.186258
+Levenshtein::IterativeWithFullMatrix             | 2.320000  | 2.343141
+Levenshtein::IterativeWithTwoMatrixRows          | 2.020000  | 2.044638
+Levenshtein::Experiment                          | 1.750000  | 1.779868
+Levenshtein::IterativeWithTwoMatrixRowsOptimized | 1.320000  | 1.343095
+Levenshtein::IterativeWithTwoMatrixRowsExt       | 0.220000  | 0.228965
+Text::Levenshtein (from gem text)                | 2.240000  | 2.308803
 
 _Currently the set of fixtures is very small - ruby 2.1.0 is used_
 
