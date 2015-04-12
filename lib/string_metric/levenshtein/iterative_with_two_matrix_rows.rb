@@ -17,12 +17,10 @@ module StringMetric
         n = to.length
 
         v0 = (0..m).to_a
-        v1 = []
         x = 0
 
         n.times do |i|
-          x = v1[0] = i + 1
-
+          current = x = i + 1
           sub_cell = v0[0]
 
           m.times do |j|
@@ -30,20 +28,19 @@ module StringMetric
 
             ins_cell = v0[j+1]
 
-            x = [x + deletion_cost,         # deletion
+            x = [current + deletion_cost,   # deletion
                  ins_cell + insertion_cost, # insertion
                  sub_cell + cost            # substitution
                 ].min
 
-
-            v1[j + 1] = x
-
+            v0[j] = current
+            current = x
             sub_cell = ins_cell
           end
 
+          v0[m] = x
           break if max_distance && v0[i] > max_distance
 
-          v0 = v1.dup
         end
 
         if max_distance && x > max_distance
