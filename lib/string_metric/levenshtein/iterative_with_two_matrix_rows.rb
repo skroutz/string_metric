@@ -39,8 +39,7 @@ module StringMetric
           end
 
           v0[m] = x
-          break if max_distance && v0[i] > max_distance
-
+          break if max_distance && v0.min > max_distance
         end
 
         if max_distance && x > max_distance
