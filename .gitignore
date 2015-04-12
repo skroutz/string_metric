@@ -1,5 +1,7 @@
 *.gem
 *.rbc
+*.o
+*.so
 .bundle
 .config
 .ruby-version
