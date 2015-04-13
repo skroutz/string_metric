@@ -4,10 +4,6 @@ module StringMetric
   module Levenshtein
     class IterativeWithTwoMatrixRows
       def self.distance(from, to, options = {})
-        return 0 if from == to
-        return to.size if from.size.zero?
-        return from.size if to.size.zero?
-
         max_distance      = options[:max_distance]
         insertion_cost    = options.fetch(:insertion_cost, 1)
         deletion_cost     = options.fetch(:deletion_cost, 1)
@@ -15,6 +11,14 @@ module StringMetric
 
         m = from.length
         n = to.length
+
+        if max_distance && (n - m).abs >= max_distance
+          return max_distance
+        end
+
+        return 0 if from == to
+        return n if m.zero?
+        return m if n.zero?
 
         v0 = (0..m).to_a
         x = 0
