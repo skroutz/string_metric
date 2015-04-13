@@ -24,11 +24,48 @@ shared_examples "Levenshtein Distance" do |options|
 
     context "when max_distance is passed as option" do
       context "and normal distance is greater than max_distance" do
-        let(:max_distance) { 2 }
-
         it "is trimmed to max_distance" do
-          expect(described_class.distance("kitten", "sitting",
-            max_distance: max_distance)).to eq max_distance
+          expect(described_class.distance("gumbo", "gambol", max_distance: 1)).to eq 1
+          expect(described_class.distance("test", "tasf", max_distance: 1)).to eq 1
+          expect(described_class.distance("kitten", "sitting", max_distance: 2)).to eq 2
+          expect(described_class.distance("kitten", "kittenss", max_distance: 1)).to eq 1
+          expect(described_class.distance("kittenss", "kitten", max_distance: 1)).to eq 1
+          expect(described_class.distance("sitting", "kitten", max_distance: 2)).to eq 2
+          expect(described_class.distance("gambol", "gumbo", max_distance: 1)).to eq 1
+          expect(described_class.distance("kitten", "", max_distance: 2)).to eq 2
+          expect(described_class.distance("", "kitten", max_distance: 3)).to eq 3
+        end
+      end
+      context "and normal distance is less than max_distance" do
+        it "is calculated distance" do
+          expect(described_class.distance("", "t", max_distance: 2)).to eq 1
+          expect(described_class.distance("t", "", max_distance: 3)).to eq 1
+          expect(described_class.distance("test", "test", max_distance: 1)).to eq 0
+          expect(described_class.distance("test", "tent", max_distance: 2)).to eq 1
+          expect(described_class.distance("gumbo", "gambol", max_distance: 3)).to eq 2
+          expect(described_class.distance("kitten", "sitting", max_distance: 4)).to eq 3
+          expect(described_class.distance("kitten", "kittenss", max_distance: 4)).to eq 2
+          expect(described_class.distance("kittenss", "kitten", max_distance: 4)).to eq 2
+          expect(described_class.distance("sitting", "kitten", max_distance: 4)).to eq 3
+          expect(described_class.distance("gambol", "gumbo", max_distance: 3)).to eq 2
+          expect(described_class.distance("", "cat", max_distance: 4)).to eq 3
+          expect(described_class.distance("cat", "", max_distance: 5)).to eq 3
+          expect(described_class.distance("", "", max_distance: 2)).to eq 0
+        end
+      end
+      context "and normal distance is same as max_distance" do
+        it "is calculated distance" do
+          expect(described_class.distance("test", "test", max_distance: 0)).to eq 0
+          expect(described_class.distance("test", "tent", max_distance: 1)).to eq 1
+          expect(described_class.distance("gumbo", "gambol", max_distance: 2)).to eq 2
+          expect(described_class.distance("kitten", "sitting", max_distance: 3)).to eq 3
+          expect(described_class.distance("kitten", "kittenss", max_distance: 2)).to eq 2
+          expect(described_class.distance("kittenss", "kitten", max_distance: 2)).to eq 2
+          expect(described_class.distance("sitting", "kitten", max_distance: 3)).to eq 3
+          expect(described_class.distance("gambol", "gumbo", max_distance: 2)).to eq 2
+          expect(described_class.distance("", "cat", max_distance: 3)).to eq 3
+          expect(described_class.distance("cat", "", max_distance: 3)).to eq 3
+          expect(described_class.distance("", "", max_distance: 0)).to eq 0
         end
       end
     end

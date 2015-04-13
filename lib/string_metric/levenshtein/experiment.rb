@@ -4,10 +4,6 @@ module StringMetric
   module Levenshtein
     class Experiment
       def self.distance(from, to, options = {})
-        return 0 if from == to
-        return to.size if from.size.zero?
-        return from.size if to.size.zero?
-
         m = from.length
         n = to.length
 

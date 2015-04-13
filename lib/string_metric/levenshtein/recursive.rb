@@ -4,14 +4,18 @@ module StringMetric
   module Levenshtein
     class Recursive
       def self.distance(from, to, options = {})
-        return 0 if from == to
-        return to.size if from.size.zero?
-        return from.size if to.size.zero?
-
         max_distance      = options[:max_distance]
         insertion_cost    = options.fetch(:insertion_cost, 1)
         deletion_cost     = options.fetch(:deletion_cost, 1)
         substitution_cost = options.fetch(:substitution_cost, 1)
+
+        if max_distance && (from.size - to.size).abs >= max_distance
+          return max_distance
+        end
+
+        return 0 if from == to
+        return to.size if from.size.zero?
+        return from.size if to.size.zero?
 
         if from.chars.to_a.last == to.chars.to_a.last
           cost = 0
