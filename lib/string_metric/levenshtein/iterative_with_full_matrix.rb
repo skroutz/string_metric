@@ -20,6 +20,7 @@ module StringMetric
         (1..from.size).each { |j| d[0][j] = j }
         (1..to.size).each { |i| d[i][0] = i }
 
+        to_column = 0
         (1..from.size).each do |j|
           (1..to.size).each do |i|
             if from[j-1] == to[i-1]
@@ -30,9 +31,10 @@ module StringMetric
                          d[i-1][j-1] + substitution_cost  # substitution
                         ].min
             end
+            to_column = i
           end
 
-          break if max_distance and d[j][j] > max_distance
+          break if max_distance and d[to_column].min > max_distance
         end
 
         x = d[to.size][from.size]

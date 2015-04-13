@@ -29,6 +29,9 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("test", "tasf", max_distance: 1)).to eq 1
           expect(described_class.distance("kitten", "sitting", max_distance: 2)).to eq 2
           expect(described_class.distance("trolol", "trololol", max_distance: 1)).to eq 1
+          expect(described_class.distance("trololol", "trolol", max_distance: 1)).to eq 1
+          expect(described_class.distance("sitting", "kitten", max_distance: 2)).to eq 2
+          expect(described_class.distance("gambol", "gumbo", max_distance: 1)).to eq 1
         end
       end
       context "and normal distance is less than max_distance" do
@@ -40,6 +43,9 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("gumbo", "gambol", max_distance: 3)).to eq 2
           expect(described_class.distance("kitten", "sitting", max_distance: 4)).to eq 3
           expect(described_class.distance("trolol", "trololol", max_distance: 4)).to eq 2
+          expect(described_class.distance("trololol", "trolol", max_distance: 4)).to eq 2
+          expect(described_class.distance("sitting", "kitten", max_distance: 4)).to eq 3
+          expect(described_class.distance("gambol", "gumbo", max_distance: 3)).to eq 2
         end
       end
       context "and normal distance is same as max_distance" do
@@ -49,6 +55,9 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("gumbo", "gambol", max_distance: 2)).to eq 2
           expect(described_class.distance("kitten", "sitting", max_distance: 3)).to eq 3
           expect(described_class.distance("trolol", "trololol", max_distance: 2)).to eq 2
+          expect(described_class.distance("trololol", "trolol", max_distance: 2)).to eq 2
+          expect(described_class.distance("sitting", "kitten", max_distance: 3)).to eq 3
+          expect(described_class.distance("gambol", "gumbo", max_distance: 2)).to eq 2
         end
       end
     end
