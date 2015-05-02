@@ -11,13 +11,13 @@ VALUE distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE
                    VALUE v_max_distance, VALUE v_insertion_cost, VALUE v_deletion_cost,
                    VALUE v_substitution_cost);
 
-VALUE StringMetric = Qnil;
-VALUE Levenshtein = Qnil;
-VALUE IterativeWithTwoMatrixRowsExt = Qnil;
-
 void
 Init_iterative_with_two_matrix_rows_ext(void)
 {
+    VALUE StringMetric;
+    VALUE Levenshtein;
+    VALUE IterativeWithTwoMatrixRowsExt;
+
     StringMetric = rb_define_module("StringMetric");
     Levenshtein = rb_define_module_under(StringMetric, "Levenshtein");
 
