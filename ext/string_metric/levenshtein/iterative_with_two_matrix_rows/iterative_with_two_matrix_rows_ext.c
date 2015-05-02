@@ -3,9 +3,11 @@
 #define MIN2(a, b) (((a) < (b)) ? (a) : (b))
 #define MIN3(a, b, c) (MIN2(MIN2((a), (b)), (c)))
 
-#define MALLOC_W(ptr, size) \
-    if ((ptr = malloc(size)) == NULL) \
-        rb_memerror()
+#define MALLOC_W(ptr, size) do { \
+    ptr = malloc(size);          \
+    if (!ptr)                    \
+        rb_memerror();           \
+} while (0)
 
 VALUE distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_len,
                    VALUE v_max_distance, VALUE v_insertion_cost, VALUE v_deletion_cost,
