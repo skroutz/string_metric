@@ -1,6 +1,7 @@
 #include <ruby.h>
 
-#define MIN(a, b, c) ((a) < (b) ? ((a) < (c) ? (a) : (c)) : ((b) < (c) ? (b) : (c)))
+#define MIN2(a, b) (((a) < (b)) ? (a) : (b))
+#define MIN3(a, b, c) (MIN2(MIN2((a), (b)), (c)))
 
 #define MALLOC_W(ptr, size) \
     if ((ptr = malloc(size)) == NULL) \
@@ -74,7 +75,7 @@ distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_
 
             ins_cell = v0[j + 1];
 
-            x = MIN(x + deletion_cost, ins_cell + insertion_cost, sub_cell + cost);
+            x = MIN3(x + deletion_cost, ins_cell + insertion_cost, sub_cell + cost);
 
             v1[j + 1] = x;
             sub_cell = ins_cell;
