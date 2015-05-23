@@ -5,6 +5,9 @@ require_relative "levenshtein/iterative_with_two_matrix_rows"
 require_relative "levenshtein/iterative_with_two_matrix_rows_optimized"
 require_relative "levenshtein/iterative_with_full_matrix"
 require_relative "levenshtein/recursive"
+require_relative "levenshtein/trie_node"
+require_relative "levenshtein/trie_radix_tree"
+require_relative "levenshtein/trie_radix_tree_ext"
 
 module StringMetric
   # Levenshtein Distance implementation
