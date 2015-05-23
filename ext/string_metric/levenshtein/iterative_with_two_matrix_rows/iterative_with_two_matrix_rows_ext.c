@@ -44,16 +44,14 @@ distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_
     long to_len =   NUM2LONG(v_to_len);
 
     long v0_len = (from_len + 1) * sizeof(long);
-    long v1_len = v0_len;
 
     int *from, *to;
-    long *v0, *v1, i, j, sub_cell, ins_cell, cost, x = 0;
+    long *v0, current, i, j, sub_cell, ins_cell, cost, x = 0;
 
     /* Use malloc for these arrays in order to avoid stack overflow from big input strings */
     MALLOC_W(from, from_len * sizeof(int));
     MALLOC_W(to,   to_len   * sizeof(int));
     MALLOC_W(v0,   v0_len);
-    MALLOC_W(v1,   v1_len);
 
     /* Fill ´from´ & ´to´ C arrays with values from the corresponding ruby arrays */
     for (i = 0; i < from_len; i++)
@@ -68,7 +66,7 @@ distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_
 
     for (i = 0; i < to_len; i++)
     {
-        x = v1[0] = i + 1;
+        current = x = i + 1;
         sub_cell = v0[0];
 
         for (j = 0; j < from_len; j++)
@@ -77,23 +75,22 @@ distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_
 
             ins_cell = v0[j + 1];
 
-            x = MIN3(x + deletion_cost, ins_cell + insertion_cost, sub_cell + cost);
+            x = MIN3(current + deletion_cost, ins_cell + insertion_cost, sub_cell + cost);
 
-            v1[j + 1] = x;
+            v0[j] = current;
+            current = x;
             sub_cell = ins_cell;
         }
 
+        v0[from_len] = x;
         if (max_distance && v0[i] > max_distance)
             break;
-
-        memcpy(v0, v1, v1_len);
     }
 
     /* Clean up allocated memory */
     free(from);
     free(to);
     free(v0);
-    free(v1);
 
     if (max_distance && x > max_distance)
       return LONG2NUM(max_distance);
