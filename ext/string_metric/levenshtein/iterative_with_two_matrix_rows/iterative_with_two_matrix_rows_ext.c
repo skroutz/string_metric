@@ -9,6 +9,17 @@
         rb_memerror();           \
 } while (0)
 
+static long min(long *array, long len)
+{
+    long i, min = array[0];
+
+    for (i = 1; i < len; i++)
+        if (array[i] < min)
+            min = array[i];
+
+    return min;
+}
+
 VALUE distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_len,
                    VALUE v_max_distance, VALUE v_insertion_cost, VALUE v_deletion_cost,
                    VALUE v_substitution_cost);
@@ -83,7 +94,7 @@ distance_ext(VALUE self, VALUE v_from, VALUE v_to, VALUE v_from_len, VALUE v_to_
         }
 
         v0[from_len] = x;
-        if (max_distance && v0[i] > max_distance)
+        if (max_distance && min(v0, v0_len) > max_distance)
             break;
     }
 

@@ -34,6 +34,7 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("gambol", "gumbo", max_distance: 1)).to eq 1
           expect(described_class.distance("kitten", "", max_distance: 2)).to eq 2
           expect(described_class.distance("", "kitten", max_distance: 3)).to eq 3
+          expect(described_class.distance("a", "reallylongwordfortest", max_distance: 5)).to eq 5
         end
       end
       context "and normal distance is less than max_distance" do
@@ -51,6 +52,7 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("", "cat", max_distance: 4)).to eq 3
           expect(described_class.distance("cat", "", max_distance: 5)).to eq 3
           expect(described_class.distance("", "", max_distance: 2)).to eq 0
+          expect(described_class.distance("a", "reallylongwordfortest", max_distance: 25)).to eq 20
         end
       end
       context "and normal distance is same as max_distance" do
@@ -66,6 +68,7 @@ shared_examples "Levenshtein Distance" do |options|
           expect(described_class.distance("", "cat", max_distance: 3)).to eq 3
           expect(described_class.distance("cat", "", max_distance: 3)).to eq 3
           expect(described_class.distance("", "", max_distance: 0)).to eq 0
+          expect(described_class.distance("a", "reallylongwordfortest", max_distance: 20)).to eq 20
         end
       end
     end
