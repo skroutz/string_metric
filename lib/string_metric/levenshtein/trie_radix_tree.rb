@@ -10,7 +10,7 @@ module StringMetric
         @deletion_cost     = options[:deletion_cost]     || 1
         @substitution_cost = options[:substitution_cost] || 1
 
-        results = []
+        results = {}
         word = from.codepoints
         currentRow = (0..word.length).to_a
 
@@ -35,7 +35,7 @@ module StringMetric
         end
 
         if currentRow.last <= @max_distance && !node.word.nil?
-          results << [node.word, currentRow.last]
+          results[node.word] = currentRow.last
         end
 
         if currentRow.min <= @max_distance
