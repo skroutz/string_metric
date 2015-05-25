@@ -12,7 +12,14 @@ if RUBY_ENGINE == "ruby"
 
   Rake::ExtensionTask.new do |ext|
     ext.name = "trie_radix_tree_ext"
-    ext.ext_dir = "ext/#{dir}"
+    ext.ext_dir = "ext/#{dir}/trie_radix_tree"
+    ext.lib_dir = "lib/#{dir}"
+    ext.gem_spec = spec
+  end
+
+  Rake::ExtensionTask.new do |ext|
+    ext.name = "iterative_with_two_matrix_rows_ext"
+    ext.ext_dir = "ext/#{dir}/iterative_with_two_matrix_rows"
     ext.lib_dir = "lib/#{dir}"
     ext.gem_spec = spec
   end
@@ -24,4 +31,3 @@ if RUBY_ENGINE == "ruby"
 else
   task default: :spec
 end
-
