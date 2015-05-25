@@ -58,7 +58,7 @@ module StringMetric
     # Currently the default strategy is set to IterativeWithTwoMatrixRows
     def default_strategy
       if RUBY_ENGINE == "ruby"
-        pick_strategy(:two_matrix_rows_v2)
+        pick_strategy(:two_matrix_rows_ext)
       else
         pick_strategy(:two_matrix_rows)
       end
